@@ -13,7 +13,7 @@ from traitlets import Integer, List, Unicode, Bool
 from ._frontend import module_name, module_version
 
 
-class BBoxWidget(DOMWidget):
+class BBoxWidgetForSolara(DOMWidget):
     """A widget for adding bounding box annotations to an image
 
     Parameters
@@ -59,6 +59,7 @@ class BBoxWidget(DOMWidget):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        kwargs['init_func'](self)
         self.on_msg(self._handle_custom_msg)
         self.submit_callback = None
         self.skip_callback = None
